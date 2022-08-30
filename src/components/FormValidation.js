@@ -5,30 +5,16 @@ import CardBackPreview from './CardBackPreview';
 
 const FormValidation = () => {
     //Setting multiple state variables
-    const [fullName, setFullName] = useState("Jane Appleseed");
-    const [cardNumber, setCardNumber] = useState("0000000000000000");
-    const [expMonth, setExpMonth] = useState("00");
-    const [expYear, setExpYear] = useState("00");
-    const [CVC, setCVC] = useState(123);
+    const [fullName, setFullName] = useState("");
+    const [cardNumber, setCardNumber] = useState("");
+    const [expMonth, setExpMonth] = useState("");
+    const [expYear, setExpYear] = useState("");
+    const [CVC, setCVC] = useState("");
 
-    const getName = (value) => {
-        setFullName(value);
-    }
-
-    const getCardNumber = (value) => {
-        setCardNumber(value);
-    }
-
-    const getExpMonth = (value) => {
-        setExpMonth(value);
-    }
-
-    const getExpYear = (value) => {
-        setExpYear(value);
-    }
-
-    const getCVC = (value) => {
-        setCVC(value);
+    const onSubmitBtn = () => {
+        if(!fullName) {
+            
+        }
     }
 
 
@@ -36,7 +22,12 @@ const FormValidation = () => {
         <div className="full-container">
             <div className="left-panel"></div>
             <div className="card-front-container">
-                <CardFacePreview cardNumber={cardNumber} fullName={fullName} expMonth={expMonth} expYear={expYear} />
+                <CardFacePreview 
+                    fullName={fullName}
+                    cardNumber={cardNumber}
+                    expMonth={expMonth}
+                    expYear={expYear}
+                />
             </div>
             <div className="card-back-container">
                 <CardBackPreview CVC={CVC} />
@@ -50,8 +41,8 @@ const FormValidation = () => {
                         <input
                             type="text"
                             placeholder="e.g Jane Appleseed"
-                            onChange={(e) => { getName(e.target.value) }}
-                            className="wide-input"
+                            onChange={(e) => { setFullName(e.target.value) }}
+                            className="wide-input name-input"
                             //Only allow input of letters for full name
                             onKeyPress={(e) => preventNumbers(e)}
                         />
@@ -66,7 +57,7 @@ const FormValidation = () => {
                             maxLength="16"
                             type="text" //Has to be text so maxLength works
                             placeholder="e.g 1234 5678 9123 4567"
-                            onChange={(e) => { getCardNumber(e.target.value) }}
+                            onChange={(e) => { setCardNumber(e.target.value) }}
                             className="wide-input card-number-input"
                             //Function to only allow input of numbers
                             onKeyPress={(e) => preventLetters(e)}
@@ -91,7 +82,7 @@ const FormValidation = () => {
                                 maxLength="2"
                                 type="text"
                                 placeholder="MM"
-                                onChange={(e) => { getExpMonth(e.target.value) }}
+                                onChange={(e) => { setExpMonth(e.target.value) }}
                                 className="exp-input"
                                 //Only allow input of numbers
                                 onKeyPress={(e) => preventLetters(e)}
@@ -102,7 +93,7 @@ const FormValidation = () => {
                                 maxLength="2"
                                 type="text"
                                 placeholder="YY"
-                                onChange={(e) => { getExpYear(e.target.value) }}
+                                onChange={(e) => { setExpYear(e.target.value) }}
                                 className="exp-input"
                                 //Only allow input of numbers
                                 onKeyPress={(e) => preventLetters(e)}
@@ -113,7 +104,7 @@ const FormValidation = () => {
                                 maxLength="3"
                                 type="text"
                                 placeholder="e.g 565"
-                                onChange={(e) => { getCVC(e.target.value) }}
+                                onChange={(e) => { setCVC(e.target.value) }}
                                 className="cvc-input"
                                 //Only allow input of numbers
                                 onKeyPress={(e) => preventLetters(e)}
@@ -125,6 +116,7 @@ const FormValidation = () => {
                             type="button"
                             value="Confirm"
                             className="btn"
+                            onClick={onSubmitBtn}
                         />
                     </label>
                 </form>
