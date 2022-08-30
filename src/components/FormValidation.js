@@ -10,10 +10,21 @@ const FormValidation = () => {
     const [expMonth, setExpMonth] = useState("");
     const [expYear, setExpYear] = useState("");
     const [CVC, setCVC] = useState("");
+    const [displayTY, setDisplayTY] = useState(0);
 
-    const onSubmitBtn = () => {
-        if(!fullName) {
-            
+    const onSubmitBtn = (e) => {
+        if(
+            !fullName
+            || !cardNumber
+            || !expMonth 
+            || !expYear 
+            || !CVC
+        ) {
+            console.log("Some input field is empty");
+            setDisplayTY(0);
+        }else {
+            setDisplayTY(displayTY + 1);
+            console.log("All input fields are full");
         }
     }
 
@@ -39,6 +50,7 @@ const FormValidation = () => {
                             Placeholder Name
                         </div>
                         <input
+                            required
                             type="text"
                             placeholder="e.g Jane Appleseed"
                             onChange={(e) => { setFullName(e.target.value) }}
