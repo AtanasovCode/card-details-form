@@ -5,13 +5,22 @@ import FormatText from '../components/FormatText';
 const CardFacePreview = (props) => {
 
 
+    const handleCardNumber = (text) => {
+        let formattedText = text.split(' ').join('');
+        if (formattedText.length > 0) {
+          formattedText = formattedText.match(new RegExp('.{1,4}', 'g')).join(' ');
+        }
+        return formattedText;
+      }
+
+
     const initialValues = [
         {name: "Jane Appleseed"},
-        {number: "1234123412341234"},
+        {number: handleCardNumber("1234123412341234")},
         {month: "00"},
         {year: "00"},
-        {CVC: "000"}
     ]
+
 
     const {cardNumber, fullName, expMonth, expYear } = props;
 
@@ -28,7 +37,7 @@ const CardFacePreview = (props) => {
                 className="logo"
             />
             <div className="card-number">
-                <FormatText cardNumber={cardNumber} />
+                {!cardNumber ? initialValues.map(initial => initial.number) : cardNumber}
             </div>
             <div className="card-name">
                 {!fullName ? initialValues.map(initial => initial.name) : fullName}

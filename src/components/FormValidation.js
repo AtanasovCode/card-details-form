@@ -1,6 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import CardFacePreview from './CardFacePreview';
 import CardBackPreview from './CardBackPreview';
+import handleCardNumber from './HandleCardNumber';
+import { preventLetters, preventNumbers } from './PreventInput';
 
 
 const FormValidation = () => {
@@ -12,7 +14,7 @@ const FormValidation = () => {
     const [CVC, setCVC] = useState("");
     const [displayTY, setDisplayTY] = useState(0);
 
-    const onSubmitBtn = (e) => {
+    const onSubmitBtn = () => {
         if (
             !fullName
             || !cardNumber
@@ -28,20 +30,10 @@ const FormValidation = () => {
         }
     }
 
-
-    const preventLetters = (e) => {
-        if (!/[0-9]/.test(e.key)) {
-            e.preventDefault();
-        }
+    const onSubmitThankYou = () => {
+        alert("This is the full design, refresh the page to input new info");
     }
 
-    const preventNumbers = (e) => {
-        if (/[0-9]/.test(e.key)) {
-            e.preventDefault();
-        }
-    }
-
-    
 
     const display = () => {
         if (displayTY === 0) {
@@ -81,12 +73,13 @@ const FormValidation = () => {
                                 </div>
                                 <input
                                     required
-                                    //Max lenght to be 16
-                                    maxLength="16"
+                                    //Max lenght to be 16 numbers
+                                    maxLength="19" //16 plus 3 for the spaces
                                     type="text" //Has to be text so maxLength works
                                     placeholder="e.g 1234 5678 9123 4567"
                                     onChange={(e) => { setCardNumber(e.target.value) }}
                                     className="wide-input card-number-input"
+                                    value={handleCardNumber(cardNumber)}
                                     //Function to only allow input of numbers
                                     onKeyPress={(e) => preventLetters(e)}
                                 />
@@ -170,13 +163,15 @@ const FormValidation = () => {
                         <div className="completed-icon-container">
                             Icon goes here
                         </div>
-                        <div>
+                        <div className="completed-heading">
                             <h1>THANK YOU!</h1>
                         </div>
-                        <div>
-                            <button>
-                                CONTINUE
-                            </button>
+                        <div className="completed-btn">
+                            <input 
+                                type="button"
+                                value="Continue"
+                                onClick={onSubmitThankYou}
+                            />
                         </div>
                     </div>
                 </div>
