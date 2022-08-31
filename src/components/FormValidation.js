@@ -17,16 +17,20 @@ const FormValidation = () => {
     const onSubmitBtn = () => {
         if (
             !fullName
-            || !cardNumber
-            || !expMonth
-            || !expYear
-            || !CVC
+            || cardNumber.length !== 19
+            || expMonth.length !== 2
+            || expYear.length !== 2
+            || CVC.length !== 3
         ) {
             console.log("Some input field is empty");
-            setDisplayTY(0);
+            if(displayTY === 0) {
+                setDisplayTY(displayTY + 1);
+            }
+            console.log(displayTY)
         } else {
-            setDisplayTY(displayTY + 1);
+            setDisplayTY(displayTY + 2);
             console.log("All input fields are full");
+            console.log(displayTY)
         }
     }
 
@@ -36,7 +40,7 @@ const FormValidation = () => {
 
 
     const display = () => {
-        if (displayTY === 0) {
+        if (displayTY === 0 || displayTY === 1) {
             return (
                 <div className="full-container">
                     <div className="left-panel"></div>
@@ -132,6 +136,10 @@ const FormValidation = () => {
                                     />
                                 </div>
                             </label>
+                            {displayTY === 1 &&
+                                <div className="error-message">
+                                    Please Fill The Input Fields Properly!
+                                </div>}
                             <label>
                                 <input
                                     type="button"

@@ -145,20 +145,12 @@ input {
 
 /*=====ERROR TEXT=====================*/
 
-.card-number-error-text {
-  display: none;
-}
-
-.card-number-error-text.error {
-  margin-top: 10px;
-  font-size: 13px;
+.error-message {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  font-size: 14px;
   color: red;
-}
-
-.card-number-label.error {
-  color: red;
-}
-
-.card-number-input.error {
-  border-color: red;
+  opacity: .8;
+  margin: 4px;
 }
