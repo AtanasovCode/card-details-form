@@ -24,7 +24,7 @@ const FormValidation = () => {
             || CVC.length !== 3
         ) {
             console.log("Some input field is empty");
-            if(displayTY === 0) {
+            if (displayTY === 0) {
                 setDisplayTY(displayTY + 1);
             }
             console.log(displayTY)
@@ -167,29 +167,29 @@ const FormValidation = () => {
                     </div>
                     <div className="right-panel">
                         <div className="ty-container">
-                        <div className="completed-icon-container">
-                            <img 
-                                src={iconComplete}
-                                alt="icon-complete"
-                                className="icon-complete"
-                            />
-                        </div>
-                        <div className="completed-heading">
-                            <h1>THANK YOU!</h1>
-                        </div>
-                        <div>
-                            <span>
-                                We've added your card details
-                            </span>
-                        </div>
-                        <div className="completed-btn">
-                            <input 
-                                type="button"
-                                value="Continue"
-                                onClick={onSubmitThankYou}
-                                className="btn"
-                            />
-                        </div>
+                            <div className="completed-icon-container">
+                                <img
+                                    src={iconComplete}
+                                    alt="icon-complete"
+                                    className="icon-complete"
+                                />
+                            </div>
+                            <div className="completed-heading">
+                                <h1>THANK YOU!</h1>
+                            </div>
+                            <div>
+                                <span>
+                                    We've added your card details
+                                </span>
+                            </div>
+                            <div className="completed-btn">
+                                <input
+                                    type="button"
+                                    value="Continue"
+                                    onClick={onSubmitThankYou}
+                                    className="btn"
+                                />
+                            </div>
                         </div>
                     </div>
                 </div>
