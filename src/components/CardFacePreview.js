@@ -16,7 +16,7 @@ const CardFacePreview = (props) => {
 
     const initialValues = [
         {name: "Jane Appleseed"},
-        {number: handleCardNumber("1234123412341234")},
+        {number: handleCardNumber("0000000000000000")},
         {month: "00"},
         {year: "00"},
     ]

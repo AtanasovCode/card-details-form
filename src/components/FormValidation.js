@@ -3,6 +3,7 @@ import CardFacePreview from './CardFacePreview';
 import CardBackPreview from './CardBackPreview';
 import handleCardNumber from './HandleCardNumber';
 import { preventLetters, preventNumbers } from './PreventInput';
+import iconComplete from '../assets/images/icon-complete.svg';
 
 
 const FormValidation = () => {
@@ -87,9 +88,6 @@ const FormValidation = () => {
                                     //Function to only allow input of numbers
                                     onKeyPress={(e) => preventLetters(e)}
                                 />
-                                <div className="card-number-error-text">
-                                    Please Enter Your Full Card Number
-                                </div>
                             </label>
                             <label className="card-dates-container">
                                 <div className="card-dates-info">
@@ -168,18 +166,30 @@ const FormValidation = () => {
                         <CardBackPreview CVC={CVC} />
                     </div>
                     <div className="right-panel">
+                        <div className="ty-container">
                         <div className="completed-icon-container">
-                            Icon goes here
+                            <img 
+                                src={iconComplete}
+                                alt="icon-complete"
+                                className="icon-complete"
+                            />
                         </div>
                         <div className="completed-heading">
                             <h1>THANK YOU!</h1>
+                        </div>
+                        <div>
+                            <span>
+                                We've added your card details
+                            </span>
                         </div>
                         <div className="completed-btn">
                             <input 
                                 type="button"
                                 value="Continue"
                                 onClick={onSubmitThankYou}
+                                className="btn"
                             />
+                        </div>
                         </div>
                     </div>
                 </div>
