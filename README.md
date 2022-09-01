@@ -35,7 +35,7 @@ Users should be able to:
 
 ### Links
 
-- [Solution URL](https://github.com/AtanasovCode/card-details-form/tree/main
+- [Solution URL](https://github.com/AtanasovCode/card-details-form)
 - [Live Site URL](https://card-details-form.netlify.app)
 
 ## My process
